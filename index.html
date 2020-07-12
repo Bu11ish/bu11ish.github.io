@@ -1,32 +1,93 @@
+<!DOCTYPE html>
 <html>
 <head>
   <script type="text/javascript">
     var urlParams = new URLSearchParams(window.location.search);
     var baseCardUrl = "https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/";
-    var cards = { };
+    var cards = [];
+    var cardIdMap = {
+        tc: '10_of_clubs',
+        td: '10_of_diamonds',
+        th: '10_of_hearts',
+        ts: '10_of_spades',
+        "2c": '2_of_clubs',
+        "2d": '2_of_diamonds',
+        "2h": '2_of_hearts',
+        "2s": '2_of_spades',
+        "3c": '3_of_clubs',
+        "3d": '3_of_diamonds',
+        "3h": '3_of_hearts',
+        "3s": '3_of_spades',
+        "4c": '4_of_clubs',
+        "4d": '4_of_diamonds',
+        "4h": '4_of_hearts',
+        "4s": '4_of_spades',
+        "5c": '5_of_clubs',
+        "5d": '5_of_diamonds',
+        "5h": '5_of_hearts',
+        "5s": '5_of_spades',
+        "6c": '6_of_clubs',
+        "6d": '6_of_diamonds',
+        "6h": '6_of_hearts',
+        "6s": '6_of_spades',
+        "7c": '7_of_clubs',
+        "7d": '7_of_diamonds',
+        "7h": '7_of_hearts',
+        "7s": '7_of_spades',
+        "8c": '8_of_clubs',
+        "8d": '8_of_diamonds',
+        "8h": '8_of_hearts',
+        "8s": '8_of_spades',
+        "9c": '9_of_clubs',
+        "9d": '9_of_diamonds',
+        "9h": '9_of_hearts',
+        "9s": '9_of_spades',
+        ac: 'ace_of_clubs',
+        ad: 'ace_of_diamonds',
+        ah: 'ace_of_hearts',
+        as: 'ace_of_spades',
+        bk: 'back',
+        wb: 'black_joker',
+        jc: 'jack_of_clubs',
+        js: 'jack_of_diamonds',
+        jh: 'jack_of_hearts',
+        js: 'jack_of_spades',
+        kc: 'king_of_clubs',
+        kd: 'king_of_diamonds',
+        kh: 'king_of_hearts',
+        ks: 'king_of_spades',
+        qc: 'queen_of_clubs',
+        qd: 'queen_of_diamonds',
+        qh: 'queen_of_hearts',
+        qs: 'queen_of_spades',
+        wr: 'red_joker',
+    }
 
-    function createCards(card, key) {
-        let cardUrl = baseCardUrl + card + ".png"
-        cards[key] = document.createElement("img")
-        cards[key].src = cardUrl
-        if(card == "back") {
-            cards[key].style.filter = "invert(100%)"
+    function createCards(cardId) {
+        let cardUrl = baseCardUrl + cardIdMap[cardId] + ".png"
+        card = document.createElement("img")
+        card.src = cardUrl
+        cards.push(card)
+        if(cardId == "bk") {
+            card.style.filter = "invert(100%)"
         }
-        if(card.includes("joker")) {
-            cards[key].style.backgroundColor = "#DDDDBB"
+        if(cardId.includes("w")) {
+            card.style.backgroundColor = "#DDDDBB"
         }
     }
 
-    urlParams.forEach(createCards)
+    var cardsIdArray = urlParams.get('cards').split(',');
+    console.log('log', cardsIdArray)
+    cardsIdArray.forEach(createCards);
   </script>
 </head>
 
 <body style="background-color:#174717; text-align:center">
     <div id="cardContainer" style="padding:15px;">
       <script type="text/javascript">
-          for (let key in cards) {
-              document.getElementById("cardContainer").appendChild(cards[key])
-          }
+          cards.forEach((card) => {
+              document.getElementById("cardContainer").appendChild(card)
+          })
       </script>
 </body>
 
