@@ -1,16 +1,37 @@
 <html>
 <head>
   <script type="text/javascript">
-    var number = 123;
+    var urlParams = new URLSearchParams(window.location.search);
+    var baseCardUrl = "https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/";
+    var cards = { };
+
+    function createCards(card, key) {
+        let cardUrl = baseCardUrl + card + ".png"
+        cards[key] = document.createElement("img")
+        cards[key].src = cardUrl
+    }
+
+    urlParams.forEach(createCards)
   </script>
 </head>
 
-<body>
-    <h1>
-      the value for number is:
+<body style="background-color:#174717; text-align:center">
+    <div id="cardContainer" style="padding:15px">
       <script type="text/javascript">
-        document.write(number)
+          for (let key in cards) {
+              document.getElementById("cardContainer").appendChild(cards[key])
+          }
       </script>
-    </h1>
 </body>
+
+<style>
+    img {
+        background-color: lightgrey;
+        margin: 5px;
+        width: 128px;
+        height: auto;
+        border-radius: 4px;
+    }
+</style>
+
 </html>
