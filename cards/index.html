@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <script type="text/javascript">
     var urlParams = new URLSearchParams(window.location.search);
+    var cardsIdArray = urlParams.get('cards').split(',');
     var baseCardUrl = "https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/";
     var cards = [];
     var cardIdMap = {
@@ -76,8 +78,6 @@
         }
     }
 
-    var cardsIdArray = urlParams.get('cards').split(',');
-    console.log('log', cardsIdArray)
     cardsIdArray.forEach(createCards);
   </script>
 </head>
