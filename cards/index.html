@@ -66,6 +66,7 @@
     }
 
     function createCards(cardId) {
+        cardId = cardId.toLowerCase()
         let cardUrl = baseCardUrl + cardIdMap[cardId] + ".png"
         card = document.createElement("img")
         card.src = cardUrl
