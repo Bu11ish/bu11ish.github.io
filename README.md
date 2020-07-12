@@ -2,4 +2,4 @@
 
 ## test URL
 
-`https://bu11ish.github.io/?cards=7C,WB,KD,BK,bk`
+`https://bu11ish.github.io/cards/?cards=7C,WB,KD,BK,bk`
