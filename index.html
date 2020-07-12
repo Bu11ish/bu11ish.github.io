@@ -9,6 +9,12 @@
         let cardUrl = baseCardUrl + card + ".png"
         cards[key] = document.createElement("img")
         cards[key].src = cardUrl
+        if(card == "back") {
+            cards[key].style.filter = "invert(100%)"
+        }
+        if(card.includes("joker")) {
+            cards[key].style.backgroundColor = "#DDDDBB"
+        }
     }
 
     urlParams.forEach(createCards)
@@ -16,7 +22,7 @@
 </head>
 
 <body style="background-color:#174717; text-align:center">
-    <div id="cardContainer" style="padding:15px">
+    <div id="cardContainer" style="padding:15px;">
       <script type="text/javascript">
           for (let key in cards) {
               document.getElementById("cardContainer").appendChild(cards[key])
@@ -28,8 +34,8 @@
     img {
         background-color: lightgrey;
         margin: 5px;
-        width: 128px;
-        height: auto;
+        width: 150px;
+        height: 225px;
         border-radius: 4px;
     }
 </style>
