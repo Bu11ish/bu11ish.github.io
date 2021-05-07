@@ -16,22 +16,22 @@ Each game has a buy-in equal to 10% of the player's current points
 
 ## Point Distribution
 
-The player who finishes first recieves all his points back, plus 1/2 of everyone who finished below him's points; The player who finishes second recieves 1/2 of his points back, plus 1/4 of everyone who finished below him's points; and so on...
+The player who finishes first receives all his points back, plus 1/2 of everyone who finished below him's points; The player who finishes second recieves 1/2 of his points back, plus 1/4 of everyone who finished below him's points; and so on...
 
-Formula 
+Formula
 
-`P = B + 2^R * E`
+`P = B * 2^(R-1) + L * 2^R`
 
 Where
 
-P: points a player recives
+P: **P**oints a player recives
 
-B: the player's initial buy-in
+B: the player's initial **B**uy-in
 
-R: the player's placement in the game
+R: the player's placement (**R**anking) in the game
 
-E: the total points of every one else who finished below the player
+E: the total points of the **L**osers who finished below the player
 
 ## Demo
 
-Will build later
+https://bu11ish.github.io/poker-elo
